@@ -1,5 +1,6 @@
 public class Loader {
     public static void main(String[] args) {
+        final int CROSS_SIZE = 21;
         String[][] cross = new String[5][5];
 
         for (int numRows=0; numRows < cross.length; numRows++){
