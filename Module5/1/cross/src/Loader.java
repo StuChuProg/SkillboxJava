@@ -1,13 +1,14 @@
 public class Loader {
     public static void main(String[] args) {
         final int CROSS_SIZE = 21;
-        String[][] cross = new String[5][5];
+        String[][] cross = new String[CROSS_SIZE][CROSS_SIZE];
+
 
         for (int numRows=0; numRows < cross.length; numRows++){
             for(int numCols = 0; numCols < cross[numRows].length; numCols++){
-                if ((numCols+numRows == CROSS_SIZE - 1) || (numCols == numRows)){
+                if ((numCols + numRows == CROSS_SIZE - 1) || (numCols == numRows)){
                     cross[numRows][numCols] = "X";
-                }else cross[numRows][numCols] = " ";
+                }else cross[numRows][numCols] = "";
             }
         }
         for (int i = 0; i < cross.length; i++) {
