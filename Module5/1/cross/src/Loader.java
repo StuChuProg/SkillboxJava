@@ -5,7 +5,7 @@ public class Loader {
 
         for (int numRows=0; numRows < cross.length; numRows++){
             for(int numCols = 0; numCols < cross[numRows].length; numCols++){
-                if ((numCols+numRows == 4) || (numCols == numRows)){
+                if ((numCols+numRows == CROSS_SIZE - 1) || (numCols == numRows)){
                     cross[numRows][numCols] = "X";
                 }else cross[numRows][numCols] = " ";
             }
