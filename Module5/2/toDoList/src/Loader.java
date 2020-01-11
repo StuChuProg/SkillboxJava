@@ -5,69 +5,69 @@ public class Loader {
     public static void main(String[] args) {
         System.out.println("Введите команду");
 
-        ArrayList<String> todoList = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        String command = sc.nextLine().trim();
-
-        int quantitySpace = 0;
-
-        String ADD = "ADD";
-        String LIST = "LIST";
-        String EDIT = "EDIT";
-        String DELETE = "DELETE";
-
-        String numbool = "f";
-
-        for (int i = 0; i < command.length(); i++) {
-            if (command.charAt(i) == ' ') {
-                quantitySpace = quantitySpace + 1;
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("'exit'  для выхода");
+            String typed = scanner.nextLine();
+            if (typed.trim().equals("exit")) {
+                break;
             }
-        }
-        int space = command.indexOf(' ');
 
-        if (quantitySpace > 1) {
+            ArrayList<String> todoList = new ArrayList<>();
+            String command = scanner.nextLine().trim();
+            if (command.matches("ADD\\D+"))
+            {
+                String[] com = command.split("\\s+");
+                String num = com[1];
+                String numbool = "f";
+                for (int i = 0; i < num.length(); i++) {
 
-            String com = command.substring(0, space);
-            String numText = command.substring(space).trim();
-            int space1 = numText.indexOf(' ');
-            String number = numText.substring(0, space1).trim();
-            for (int i = 0; i < number.length(); i++) {
-                for (int j = '0'; j < '9'; j++) {
-                    if ((char) i == number.indexOf(j)) {
-                        numbool = "t";
+                    for (int j = '0'; j < '9'; j++) {
+
+                        if ((char) i == num.indexOf(j)) {
+
+                            numbool = "t";
+
+                        }
+
                     }
+
                 }
-            }
-
-            if (com.equalsIgnoreCase(ADD)) {
-
-                if (numbool.equals("t")) {
-                    if (Integer.parseInt(number) > (todoList.size()-1)){
-                        todoList.add(todoList.size(), numText.substring(space1).trim());
+                if (numbool.equals("t")){
+                    String[] comm = command.split("\\s+", 3);
+                    if (Integer.parseInt(num) > (todoList.size()-1)){
+                todoList.add((todoList.size()-1), comm[2]);
                     }else {
-                    todoList.add(Integer.parseInt(number), numText.substring(space1).trim());}
-
-                } else {
-                    todoList.add(numText);
+                        todoList.add(Integer.parseInt(comm[1]), comm[2]); }
+                }
+                else {
+                    String[] comm = command.split("\\s+", 2);
+                    todoList.add(comm[1]);
                 }
             }
-            if (com.equalsIgnoreCase(EDIT)) {
-                todoList.add(Integer.parseInt(number), numText.substring(space1).trim());
-                System.out.println("work");
+
+            if (command.matches("EDIT\\D+"))
+            {
+                String[] com = command.split("\\s+", 3);
+                todoList.set(Integer.parseInt(com[1]), com[2]);
+            }
+            if (command.matches("DELETE\\D+"))
+            {
+                String[] com = command.split("\\s+", 2);
+                todoList.remove(Integer.parseInt(com[1]));
+            }
+            if (command.matches("LIST\\D+"))
+            {
+                for (int k = 0; k < todoList.size(); k++) {
+
+                    System.out.println(k + " - " + todoList.get(k));
+
+                }
             }
 
         }
 
-        if (quantitySpace == 1 && command.substring(0, space).equalsIgnoreCase(DELETE)){
-             todoList.remove(Integer.parseInt(command.substring(space).trim()));
-
-        }
-        if (quantitySpace == 0 && command.equals(LIST)) {
-
-            for (int k = 0; k < todoList.size(); k++) {
-                System.out.println(todoList.get(k));
-          }
-       }
-
+        scanner.close();
+        System.out.println("Exit!");
     }
 }
