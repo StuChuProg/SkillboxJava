@@ -7,7 +7,7 @@ public class Loader {
         ArrayList<String> todoList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("'EXIT'  для выхода");
+            System.out.println("Введите 'EXIT'  для выхода");
             String command = scanner.nextLine().trim();
             if (command.trim().equals("EXIT")) {
                 break;
@@ -15,7 +15,11 @@ public class Loader {
 
             if (command.matches("ADD\\s\\d+\\D+")) {
                 String[] com = command.split("\\s+", 3);
-                todoList.add(Integer.parseInt(com[1]), com[2]);
+                if (Integer.parseInt(com[1]) > todoList.size()){
+
+                    todoList.add(todoList.size(), com[2]);
+                }else {
+                todoList.add(Integer.parseInt(com[1]), com[2]);}
             }
 
             if (command.matches("ADD\\s\\D+")) {
@@ -25,16 +29,26 @@ public class Loader {
 
             if (command.matches("EDIT\\s\\d+\\D+")) {
                 String[] com = command.split("\\s+", 3);
-                todoList.set(Integer.parseInt(com[1]), com[2]);
+                if (Integer.parseInt(com[1]) > todoList.size()) {
+                   System.out.println("Данной строки не существует, проверьте номер строки");
+                }else{
+                    todoList.set(Integer.parseInt(com[1]), com[2]);}
             }
             if (command.matches("DELETE\\s\\d+")) {
                 String[] com = command.split("\\s+");
-                todoList.remove(Integer.parseInt(com[1]));
+                if (Integer.parseInt(com[1]) > todoList.size()) {
+                    System.out.println("Данной строки не существует, проверьте номер строки");
+                }else{
+                todoList.remove(Integer.parseInt(com[1]));}
             }
             if (command.matches("LIST")) {
                 for (int k = 0; k < todoList.size(); k++) {
                     System.out.println(k + " - " + todoList.get(k));
                 }
+            }
+            else{
+                System.out.println("Вы ввели не поддерживаемый формат");
+                System.out.println("Поддерживаемые команды: \n\tADD, \n\tEDIT, \n\tDELETE, \n\tLIST");
             }
         }
         scanner.close();

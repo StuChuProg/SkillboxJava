@@ -11,15 +11,16 @@ public class Loader {
             if (command.trim().equals("EXIT")) {
                 break;
             }
+
             TreeSet<String> mail = new TreeSet<>();
+
             if (command.matches("ADD\\s\\D+")) {
                 String[] comm = command.split("\\s+", 2);
                 mail.add(comm[1]);
-                for (String eMail : mail) {
-                    System.out.println(eMail);
-                }
             }
-
+            for (String eMail : mail) {
+                System.out.println(eMail);
+            }
             if (command.matches("LIST")) {
                 for (String eMail : mail) {
                     System.out.println(eMail);
