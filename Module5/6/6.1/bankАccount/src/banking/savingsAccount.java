@@ -15,24 +15,33 @@ public class savingsAccount extends bankAccount{
     public void setAccountStatusNOW(int accountStatusNOW) {
         super.setAccountStatusNOW(accountStatusNOW);
     }
+ 
 
-    SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-   Date dateDep = null;
+Calendar calendar = Calendar.getInstance();
+    Date dateDep;
 
-
+    public Date getNextDate() {
+        calendar.setTime(dateDep);
+        calendar.add(Calendar.MONTH, 1);
+        Date dateNext = calendar.getTime();
+        return dateNext;
+    }
 
     public int getDeposit() {
         return accountStatusNOW + cashDeposit;
-    dateDep = new Date();
+//        dateDep = calendar.getTime();
+        dateDep = new Date();
     }
 
-    Date dateNOW = new Date();
-          if((dateNOW - dateDep)>(24 * 60 * 60 * 1000*30)){
+    Date dateNow = new Date();
 
-    public int getWithdrawal()
+    if (dateNow.after(getNextDate(dateDep)) == true)    {
+        public int getWithdrawal() {
+            return accountStatusNOW - cashWithdrawal;
+        }
+    }
+    else
     {
-        return super.getWithdrawal();
-    }}
-    else{
-        System.out.println("Срок выдачи денег не пришел! Вы не можете снять средства!");   }
+        System.out.println("Срок выдачи денег не пришел! Вы не можете снять средства!");
+    }
 }
