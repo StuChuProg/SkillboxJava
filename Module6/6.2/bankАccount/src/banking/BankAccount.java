@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class BankAccount {
 
-    protected int accountStatusNOW;
-    protected int cashWithdrawal;
-    protected int cashDeposit;
-    protected Date dateThis;
+    public int accountStatusNOW;
+    private int cashWithdrawal;
+    private int cashDeposit;
+    private Date dateThis;
 
     public BankAccount(int accountStatusNOW) {
         this.accountStatusNOW = accountStatusNOW;
