@@ -18,11 +18,11 @@ public class AccountCard extends BankAccount {
     }
 
     public void setDeposit(int cashDeposit){
-        this.accountStatusNOW = accountStatusNOW + cashDeposit;
+        super.setAccountStatusNOW(super.getAccountStatusNOW()+cashDeposit);
     }
 
     @Override
     public void setWithdrawal(int cashWithdrawal) {
-       this.accountStatusNOW = accountStatusNOW - (cashWithdrawal + cashWithdrawal/100);
+        super.setAccountStatusNOW(super.getAccountStatusNOW()- (cashWithdrawal + cashWithdrawal)/100);
     }
 }

@@ -23,9 +23,9 @@ public class SavingsAccount extends BankAccount {
    Calendar calendar = Calendar.getInstance();
     Date dateDep;
     public void setDeposit(int cashDeposit){
-//      dateDep = dateThis; - не понимаю как сделать присвоение dateDep из метода setDateThis
+
        dateDep = new Date();
-        this.accountStatusNOW = accountStatusNOW + cashDeposit;
+        super.setAccountStatusNOW(super.getAccountStatusNOW()+cashDeposit);
     }
     public Date getNextDate(Date date){
         calendar.setTime(date);
@@ -36,7 +36,7 @@ public class SavingsAccount extends BankAccount {
     public void setWithdrawal(int cashWithdrawal){
         Date dateNow = new Date();
         if(dateNow.after(getNextDate(dateDep))){
-            this.accountStatusNOW = accountStatusNOW - cashWithdrawal;
+            super.setAccountStatusNOW(super.getAccountStatusNOW()- cashWithdrawal);
         }else {
             System.out.println("Срок выдачи денег не пришел!");
         }

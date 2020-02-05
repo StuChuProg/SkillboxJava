@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class BankAccount {
 
-    public int accountStatusNOW;
+    private int accountStatusNOW;
     private int cashWithdrawal;
     private int cashDeposit;
     private Date dateThis;
