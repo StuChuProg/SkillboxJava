@@ -23,8 +23,7 @@ public class SavingsAccount extends BankAccount {
    Calendar calendar = Calendar.getInstance();
     Date dateDep;
     public void setDeposit(int cashDeposit){
-
-       dateDep = new Date();
+        dateDep = ;
         super.setAccountStatusNOW(super.getAccountStatusNOW()+cashDeposit);
     }
     public Date getNextDate(Date date){
