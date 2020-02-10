@@ -9,6 +9,6 @@ public class Manager extends Company implements Employee{
 
     @Override
     public int getMonthSalary() {
-        return 0;
+        return salary;
     }
 }
