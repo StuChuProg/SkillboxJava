@@ -3,10 +3,10 @@ import java.util.ArrayList;
 public class Company
 {
     private int income;
-    private int salary;
     private  ArrayList<Employee> staff = new ArrayList<>();
 
     private int count;
+    private int place;
 
     public Company(int income) {
         this.income = income;
@@ -29,12 +29,15 @@ public class Company
         for (int i = 1; i < count; i++){
         staff.add(employee);}
     }
-    public void fire(Employee employee){
-        staff.remove(employee);
+    public void fire(int place){
+        staff.remove(place);
     }
-    public  void fire(int count, Employee employee){
+    public  void fire(int count, int place){
         for (int i = 1; i < count; i++){
-        staff.remove(employee);}
+        staff.remove(place);}
+    }
+    public int getSize(){
+        return staff.size();
     }
 
 //    public ArrayList<Employee> getTopSalaryStaff(int count) {
