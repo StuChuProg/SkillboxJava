@@ -19,6 +19,10 @@ public class Company
     public Company() {
     }
 
+    public void setIncome(int income) {
+        this.income = income;
+    }
+
     public int getIncome() {
         return income;
     }
@@ -40,16 +44,39 @@ public class Company
         return staff.size();
     }
 
-//    public ArrayList<Employee> getTopSalaryStaff(int count) {
-//        if ()
-//            return null;
-//    }
+    public ArrayList<Employee> getTopSalaryStaff(int count) {
+        ArrayList<Employee> topList = new ArrayList<>();
+        staff.sort(new MyComparator());
+        this.count = count;
+        if (count > staff.size()){
+            System.out.println("Введено число превышающее количество сотрудников работающих в компании");
+        }else {
+            for (int i = 0; i < count; i++){
+
+                    System.out.println(staff.get(i).getMonthSalary());
+
+            }
+        }
+        return topList;
+    }
 
 
-//
-//    public ArrayList<Employee> getLowestSalaryStaff(int count) {
-//        return null;
-//    }
+
+    public ArrayList<Employee> getLowestSalaryStaff(int count) {
+        ArrayList<Employee> lowestList = new ArrayList<>();
+        staff.sort(new MyComparatorL());
+        this.count = count;
+        if (count > staff.size()){
+            System.out.println("Введено число превышающее количество сотрудников работающих в компании");
+        }else {
+            for (int i = 0; i < count; i++){
+
+                System.out.println(staff.get(i).getMonthSalary());
+
+            }
+        }
+        return null;
+    }
 
 
 
