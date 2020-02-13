@@ -4,16 +4,19 @@ public class Loader {
     public static void main(String[] args) {
 
         Company company = new Company();
-        company.setIncome(68000000);
+        company.setIncome(68_000_000);
        // System.out.println(company.getIncome());
-       company.hireAll(3, new Operator(20000));
-       company.hireAll(3, new TopManager(150000));
-       company.hireAll(4, new Manager(10000));
-      //  company.fire(10, 8);
-
-company.getTopSalaryStaff(5);
+       company.hireAll(180, new Operator(35000));
+       company.hireAll(10, new TopManager(200000, company));
+       company.hireAll(80, new Manager(6000, company));
+        System.out.println("количество сотрудников " + (company.getSize() + 3));
+        company.getTopSalaryStaff(15);
         System.out.println();
-company.getLowestSalaryStaff(5);
+        company.fire(130, 50);
+        System.out.println("количество сотрудников " + (company.getSize() + 3));
+company.getTopSalaryStaff(15);
+        System.out.println();
+company.getLowestSalaryStaff(30);
     }
 
 

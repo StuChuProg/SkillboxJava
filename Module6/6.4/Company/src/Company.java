@@ -8,9 +8,11 @@ public class Company
     private int count;
     private int place;
 
+
     public Company(int income) {
         this.income = income;
     }
+
 
     public void setCount(int count) {
         this.count = count;

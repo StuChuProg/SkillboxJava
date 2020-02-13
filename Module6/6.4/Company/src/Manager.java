@@ -1,20 +1,13 @@
 public class Manager extends Company implements Employee{
     private int salary;
+    private Company company;
 
-    @Override
-    public void setIncome(int income) {
-        super.setIncome(income);
-    }
 
-    @Override
-    public int getIncome() {
-        return super.getIncome();
-    }
+    public Manager(int salary, Company company)
+    { this.company = company;
 
-    public Manager(int salary)
-    {
-        System.out.println(super.getIncome());
-        this.salary = (salary+(super.getIncome()/200));
+        this.salary = (salary+(company.getIncome()/200));
+        System.out.println("Manager " + this.salary);
     }
 
     @Override
